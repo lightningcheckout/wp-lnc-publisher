@@ -295,35 +295,11 @@ class BLN_Publisher
         {
             try
             {
-                if (!empty($this->connection_options['alby_access_token']))
-                {
-                    $this->lightningClientType = 'alby';
-                    $this->lightningClient = new BLN_Publisher_Alby_Client($this->connection_options);
-                }
-                elseif (!empty($this->connection_options['lnd_address']))
-                {
-                    $this->lightningClientType = 'lnd';
-                    $this->lightningClient = new BLN_Publisher_LND_Client($this->connection_options);
-                }
-                elseif (!empty($this->connection_options['lnbits_apikey'])) {
+                if (!empty($this->connection_options['lnbits_apikey'])) {
                     $this->lightningClientType = 'lnbits';
                     $this->lightningClient = new BLN_Publisher_LNBits_Client($this->connection_options);
                 }
-                elseif (!empty($this->connection_options['lnaddress_address']) || !empty($this->connection_options['lnaddress_lnurl']))
-                {
-                    $this->lightningClientType = 'lnaddress';
-                    $this->lightningClient = new BLN_Publisher_LNAddress_Client($this->connection_options);
-                }
-                elseif (!empty($this->connection_options['btcpay_host']))
-                {
-                    $this->lightningClientType = 'btcpay';
-                    $this->lightningClient = new BLN_Publisher_BTCPay_Client($this->connection_options);
-                }
-                elseif (!empty($this->connection_options['lndhub_url']) && !empty($this->connection_options['lndhub_login']) && !empty($this->connection_options['lndhub_password']))
-                {
-                    $this->lightningClientType = 'lndhub';
-                    $this->lightningClient = new BLN_Publisher_LNDHub_Client($this->connection_options);
-                }
+
             } catch (\Exception $e) {
                 echo "Faild to connect to Lightning Wallet: " . $e->getMessage();
             }

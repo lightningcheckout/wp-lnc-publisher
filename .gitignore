@@ -1,5 +1,5 @@
 # WP Lightning specific
-vendor
+# vendor
 .vimrc
 bitcoin-lightning-publisher.zip
 wp-svn

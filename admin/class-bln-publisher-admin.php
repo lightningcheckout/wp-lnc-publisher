@@ -65,8 +65,8 @@ class BLN_Publisher_Admin
     public function lightning_menu()
     {
         add_menu_page(
-            'LN Publisher',
-            'LN Publisher',
+            'Bitcoin Paywall',
+            'Bitcoin Paywall',
             'manage_options',
             'lnp_settings',
             null,

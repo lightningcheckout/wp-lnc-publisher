@@ -15,8 +15,8 @@ class LNP_ConnectionPage extends LNP_SettingsPage
   protected function set_translations()
   {
     // Menu Item label
-    $this->page_title = __('Wallet Settings', 'lnp-alby');
-    $this->menu_title = __('Wallet Settings', 'lnp-alby');
+    $this->page_title = __('API settings', 'lnp-alby');
+    $this->menu_title = __('API settings', 'lnp-alby');
 
     add_action('admin_notices', array($this, 'get_ln_node_info'));
   }
@@ -31,29 +31,9 @@ class LNP_ConnectionPage extends LNP_SettingsPage
   {
     // Tabs
     $this->tabs = array(
-      'alby' => array(
-        'title'       => __('Alby Wallet', 'lnp-alby'),
-        'description' => __('Connect to your Alby account using an access token.', 'lnp-alby'),
-      ),
-      'lnd' => array(
-        'title'       => __('LND', 'lnp-alby'),
-        'description' => __('Connect your LND node.', 'lnp-alby'),
-      ),
-      'lndhub' => array(
-        'title'       => __('LNDHub', 'lnp-alby'),
-        'description' => __('Connect to an LNDHub account (for example Alby).', 'lnp-alby'),
-      ),
       'lnbits' => array(
-        'title'       => __('LNbits', 'lnp-alby'),
-        'description' => __('Connect to your LNbits account.', 'lnp-alby'),
-      ),
-      'btcpay' => array(
-        'title'       => __('BTC Pay', 'lnp-alby'),
-        'description' => __('Connect to a BTCPay Server.', 'lnp-alby'),
-      ),
-      'lnaddress' => array(
-        'title'       => __('LN Address', 'lnp-alby'),
-        'description' => __('Connect using a Lightning Address.', 'lnp-alby'),
+        'title'       => __('Lightning Checkout', 'lnp-alby'),
+        'description' => __('', 'lnp-alby'),
       ),
     );
 
@@ -157,7 +137,6 @@ class LNP_ConnectionPage extends LNP_SettingsPage
       'field'   => array(
         'name'        => 'lnbits_apikey',
         'label'       => __('API Key', 'lnp-alby'),
-        'description' => __('LNbits Invoice/read key', 'lnp-alby'),
       ),
     );
 
@@ -167,7 +146,7 @@ class LNP_ConnectionPage extends LNP_SettingsPage
         'type'        => 'url',
         'name'        => 'lnbits_host',
         'label'       => __('Host', 'lnp-alby'),
-        'description' => __('LNbits host (e.g. https://legend.lnbits.com)', 'lnp-alby'),
+		'value'       => __('https://pay.lightningcheckout.eu'),
       ),
     );
 

@@ -12,14 +12,35 @@
  * @package BLN_Publisher
  *
  * @wordpress-plugin
- * Plugin Name:       Bitcoin Lightning Publisher
+ * Plugin Name:       Bitcoin Paywall
  * Description:       Bitcoin Lightning Publisher is a Paywall and Donation plugin for WordPress to accept instant Bitcoin Lightning payments and donations directly to your preferred wallet.
- * Version:           1.3.1
+ * Version:           1.0
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       lnp-alby
  * Domain Path:       /languages
  */
+
+require 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/lightningcheckout/wp-lnc-publisher/',
+	__FILE__,
+	'wp-lnc-publisher'
+);
+
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('lnc');
+
+//Optional: If you're using a private repository, specify the access token like this:
+//$myUpdateChecker->setAuthentication('your-token-here');
+
+//If you want to use release assets, call the enableReleaseAssets() method after creating the update checker instance:
+$myUpdateChecker->getVcsApi()->enableReleaseAssets();
+
+
 
 // If this file is called directly, abort.
 if (! defined('WPINC') ) {

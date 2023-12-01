@@ -12,14 +12,26 @@
  * @package BLN_Publisher
  *
  * @wordpress-plugin
- * Plugin Name:       Bitcoin Paywall
- * Description:       Bitcoin Lightning Publisher is a Paywall and Donation plugin for WordPress to accept instant Bitcoin Lightning payments and donations directly to your preferred wallet.
- * Version:           1.0
+ * Plugin Name:       Bitcoin Lightning Publisher
+ * Description:       Plugin for WordPress to accept instant Bitcoin Lightning payments and donations directly to your Lightning Checkout account.
+ * Version:           1.3.1
  * License:           GPL-3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
  * Text Domain:       lnp-alby
  * Domain Path:       /languages
  */
+
+// If this file is called directly, abort.
+if (! defined('WPINC') ) {
+    die;
+}
+
+define('BLN_PUBLISHER_VERSION', '1.3.1');
+define('BLN_PUBLISHER_PAYWALL_JWT_KEY', hash_hmac('sha256', 'lnp-alby', AUTH_KEY));
+define('BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM', 'HS256');
+define('BLN_PUBLISHER_ROOT_PATH', untrailingslashit(plugin_dir_path(__FILE__)));
+define('BLN_PUBLISHER_ROOT_URI', untrailingslashit(plugin_dir_url(__FILE__)));
+
 
 require 'plugin-update-checker/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
@@ -42,16 +54,6 @@ $myUpdateChecker->getVcsApi()->enableReleaseAssets();
 
 
 
-// If this file is called directly, abort.
-if (! defined('WPINC') ) {
-    die;
-}
-
-define('BLN_PUBLISHER_VERSION', '1.3.1');
-define('BLN_PUBLISHER_PAYWALL_JWT_KEY', hash_hmac('sha256', 'lnp-alby', AUTH_KEY));
-define('BLN_PUBLISHER_PAYWALL_JWT_ALGORITHM', 'HS256');
-define('BLN_PUBLISHER_ROOT_PATH', untrailingslashit(plugin_dir_path(__FILE__)));
-define('BLN_PUBLISHER_ROOT_URI', untrailingslashit(plugin_dir_url(__FILE__)));
 
 /**
  * The code that runs during plugin activation.
